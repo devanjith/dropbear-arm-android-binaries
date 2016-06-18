@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+cp ../config.guess ../config.sub .
+./configure --host=arm-linux-androideabi --disable-zlib --disable-largefile --disable-loginfunc --disable-shadow \
+    --disable-utmp --disable-utmpx --disable-wtmp --disable-wtmpx --disable-pututline --disable-pututxline --disable-lastlog \
+    CFLAGS='-Os -W -Wall -fPIE' LDFLAGS='-fPIE -pie'
+PROGRAMS='dbclient dropbearkey' make strip
